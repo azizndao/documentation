@@ -33,7 +33,7 @@
     <div class="d-flex">
       <template v-if="user">
         <v-btn class="mr-2" outlined :to="{name: 'Profile'}">{{ user.email }}</v-btn>
-        <v-btn depressed color="error" @click="$auth.signOut">Sign Out</v-btn>
+        <v-btn depressed color="error" @click="() => this.$auth.signOut()">Sign Out</v-btn>
       </template>
       <template v-else>
         <v-btn outlined color="error" class="mr-2" :to="{name: 'SignIn'}">Sign In</v-btn>
@@ -46,9 +46,12 @@
 <script>
 export default {
   name: 'AppBar',
-  computed: {
-    user () {
-      return this.$auth.currentUser
+  created () {
+    this.$auth.onAuthStateChanged(user => this.user = user)
+  },
+  data () {
+    return {
+      user: this.$auth.currentUser
     }
   }
 }
