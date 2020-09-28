@@ -13,13 +13,22 @@ import AppBar from '@/components/AppBar'
 
 export default {
   name: 'App',
-
+  created () {
+    this.$router.beforeEach((to, from, next) => {
+      if (this.$auth.currentUser !== null) {
+        if (to.name === 'SignIn' || to.name === 'SignUp') {
+          this.$auth.signOut()
+        }
+      }
+      next()
+    })
+  },
   components: {
-    AppBar,
+    AppBar
   },
 
   data: () => ({
     //
-  }),
-};
+  })
+}
 </script>

@@ -1,7 +1,7 @@
 <template>
   <v-card max-width="512" elevation="12" class="mx-auto mt-5 py-2">
     <v-card-title>
-
+      <span class="text-h3 font-weight-light">Create a account</span>
     </v-card-title>
     <v-card-text>
       <v-alert type="error" text outlined v-if="err">{{ err.message }}</v-alert>
@@ -18,13 +18,13 @@
       </v-form>
     </v-card-text>
     <v-card-actions>
-      <v-btn depressed color="error">Back</v-btn>
+      <v-btn depressed color="error" @click="() =>this.$router.back()">Back</v-btn>
       <v-spacer></v-spacer>
       <v-btn
           depressed color="primary"
           @click="submit"
           :loading="loading"
-          :disabled="!allValid || loading">Next
+          :disabled="!allValid || loading">Submit
       </v-btn>
     </v-card-actions>
   </v-card>
