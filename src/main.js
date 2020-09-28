@@ -10,6 +10,8 @@ import 'firebase/analytics'
 import 'firebase/performance'
 import 'firebase/firestore'
 import firebaseConfig from '@/utils/firebaseConfig'
+import 'roboto-fontface/css/roboto/roboto-fontface.css'
+import '@mdi/font/css/materialdesignicons.css'
 
 Vue.config.productionTip = false
 
