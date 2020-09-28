@@ -51,6 +51,7 @@ export default {
     submit () {
       this.loading = true
       this.$auth.signInWithEmailAndPassword(this.email, this.password)
+          .then(() => this.$router.replace('/'))
           .catch(err => this.err = err)
           .finally(() => this.loading = false)
     }
